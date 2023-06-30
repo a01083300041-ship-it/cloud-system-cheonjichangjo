@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 부트스트랩 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+		<script src="asset/Ohlle_info.js" defer></script>
+
+
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="stylesheet" href="asset/Ohlle_info.css" />
+    <title>Jeju Olle Trail</title>
+  </head>
+  <body>
+    <div class="box">
+      <span class="Jeju-Olle-Trail"> Jeju Olle Trail </span>
+    </div>
+
+    <div id="infobox1">
+      <!-- 코스 상세사진, 코스 미니사진+코스소개글 BOX -->
+      <div id="courseimg">
+        <div id="bigimg">
+          <img
+            src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_16_map_pc.jpg"
+            alt=""
+          />
+        </div>
+        <div id="small">
+          <div id="samlling">
+            <img
+              src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_16_minimap_pc.png"
+              alt=""
+            />
+          </div>
+          <div id="category">
+            <img
+              src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/map_category_pc.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="courseinfo">
+        <!-- 코스 미니사진+코스소개글 BOX -->
+        <div id="coursespanDiv1">
+          <div id="smallimg">
+            <img
+              style="width: 100%; height: 100%; object-fit: fill"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201909/06/846cd0e2-a49d-486d-a122-c2ef70bcdfab.jpg"
+              alt=""
+            />
+          </div>
+
+			<!-- stars = 속이 채워진 별,  starsNo = 속이 빈 별-->
+			  <!-- 별점 작업시 주의 JSstars stars 앞에 JS 붙은 거는 사용 하지 말아주세요-->
+			
+          <div id="coursespan">
+            <h1>제주올레 16코스</h1>
+            <a>난이도 : </a>
+            <div class="stars"></div>
+            <div class="stars"></div>
+            <div class="stars"></div>
+			<div class="stars"></div>	
+            <div class="stars"></div>	  
+            <h3>기본 정보</h3>
+			<p>총 길이 : 15.8Km 소요시간 : 5-6시간</p>
+            <p>주소 : 제주특별자치도 제주시 애월읍 고내리 1111-2</p>
+            <p>애월 바다의 소박한 아름다움과 중산간 올레로 이어지는 길이다. 고내에서 구엄까지의 쪽빛 바다, 아직도 하얀 소금기가 햇빛에 빛나는 소금빌레, 
+			낚시꾼들이 한가롭게 세월을 낚는 잔잔한 저수지, 키 큰 나무들이 그늘을 드리우는 호젓한 숲, 삼별초가 항전을 벌였던 옛 토성, 
+			평화롭고 소박한 마을, 돌담을 두른 밭, 이 모든 것을 하나로 이어 볼 수 있는 길이다.</p>
+          </div>
+        </div>
+        <div id="coursespanDiv2">
+          <img
+            style="width: 100%; height: 100%; object-fit: fill"
+            src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_16_imgmap_pc.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div id="infobox2">
+      <!-- 주변맛집 박스, 댓글창 박스 -->
+      <div id="restourant">
+        <!-- 주변맛집 박스 -->
+        <form>
+          <div
+            id="btnBox"
+            style="
+              margin: 1%;
+              flex: 1;
+              display: flex;
+              text-align: center;
+            "
+          >
+            <div
+              style="margin: 0; flex: 1"
+              class="btn-group"
+              style="float: center"
+              role="group"
+              aria-label="Basic radio toggle button group"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio1"
+                autocomplete="off"
+                checked
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio1"
+                onclick="showList2(true)"
+                >주변 경관</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio2"
+                autocomplete="off"
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio2"
+                onclick="showList2(false)"
+                >주변 맛집</label
+              >
+            </div>
+          </div>
+        </form>
+
+        <!-- 주변경관 목록 -->
+
+        <div class="L1" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/202110/28/1a58afa9-5c87-492f-b644-8927935439de.JPG"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">애월한담해안산책로</span></strong>
+            </p>
+            <p style="text-align: center">
+            해안선을 따라 걷는 구불구불 해안길
+            </p>
+          </article>
+        </div>
+
+        <div class="L2" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201807/11/a0179858-a0d2-4a39-8e92-0633d1d56836.JPG"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">중엄리새물</span></strong>
+            </p>
+            <p style="text-align: center">
+            제주 제일의 해안용수를 볼 수 있는 곳
+            </p>
+          </article>
+        </div>
+
+        <div class="L3" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201908/07/a233e453-61f9-4e64-a62e-768edd6d3a18.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">애월환해장성</span></strong>
+            </p>
+            <p style="text-align: center">
+            제주를 지키던 ‘제주의 만리장성’의 흔적이 남아있는 곳
+            </p>
+          </article>
+        </div>
+
+        <!-- 주변경관 목록 끝 -->
+
+        <!-- 주변맛집 목록 -->
+
+        <div class="R1" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201910/22/5545b872-9a2a-4d03-84b0-402a1c5e2149.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+             <!-- 식당 네이버 지도로 찾아서 링크 넣으세여 --> <strong
+                ><a
+                  href="https://map.naver.com/v5/entry/place/21423538?entry=plt&c=15,0,0,0,dh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >봄날카페</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+            드라마 '맨도롱 또똣'의 주인공이 일하던 카페
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 제주시 애월읍 애월로1길 25<br /> ⏰이용 시간 : 평일 : 09:00 ~ 21:30 , 주말 : 09:00 ~ 21:30<br />📞연락처 : (+82) 064-799-4999"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <div class="R2" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201810/30/96ea1142-0f41-4c8d-afbf-2dcef4421eb8.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong
+                ><a
+                  href="https://map.naver.com/v5/entry/place/16871522?entry=plt&c=15,0,0,0,dh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >고불락</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+            제주도의 꼭꼭 숨은 맛집
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 제주시 애월읍 고내로7길 45-12<br /> ⏰이용 시간 : 평일 : 08:00 ~ 21:00 , 주말 : 08:00 ~ 21:00<br />📞연락처 : (+82) 064-799-0393"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <div class="R3" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201910/28/af37461c-bd47-497b-b2ef-1bc45635783a.png"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong
+                ><a
+                  href="https://map.naver.com/v5/entry/place/38704266?entry=plt&c=15,0,0,0,dh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >은혜전복</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+            애월에 있는 전복보양음식전문점, 은혜전복
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 제주시 애월읍 애월로1길 24-3<br /> ⏰이용 시간 : 평일 : 10:00 ~ 20:00 , 주말 : 10:00 ~ 20:00<br />📞연락처 : 정보없음"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <!-- 주변맛집 목록 끝-->
+      </div>
+      <div id="comment">
+				<div id="contentbox">
+					<ul id="comment-list"></ul>
+				</div>
+				<div id="starContainer">
+					<div id="ratingStars">
+						<span id="starText">난이도 : </span>
+						<span class="star" data-rating="1">&#9734;</span>
+						<span class="star" data-rating="2">&#9734;</span>
+						<span class="star" data-rating="3">&#9734;</span>
+						<span class="star" data-rating="4">&#9734;</span>
+						<span class="star" data-rating="5">&#9734;</span>
+					</div>
+				</div>
+				<div id="commentbox">
+					<input
+						type="text"
+						id="commentInput"
+						placeholder="댓글을 입력하세요"
+						style="width: 80%; height: 100%; float: left;"
+					/>
+					<button
+						id="submitBtn"
+						class="btn btn-dark"
+						style="width: 20%; height: 100%; float: right;"
+					>
+						완료
+					</button>
+				</div>
+			</div>
+		</div>
+
+    <script type="text/javascript" src="asset/Ohlle_info.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+      });
+    </script>
+  </body>
+</html>

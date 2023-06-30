@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 부트스트랩 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+		<script src="asset/Ohlle_info.js" defer></script>
+
+
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="stylesheet" href="asset/Ohlle_info.css" />
+    <title>Jeju Olle Trail</title>
+  </head>
+  <body>
+    <div class="box">
+      <span class="Jeju-Olle-Trail"> Jeju Olle Trail </span>
+    </div>
+
+    <div id="infobox1">
+      <!-- 코스 상세사진, 코스 미니사진+코스소개글 BOX -->
+      <div id="courseimg">
+        <div id="bigimg">
+          <img
+            src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_05_map_pc.jpg"
+            alt=""
+          />
+        </div>
+        <div id="small">
+          <div id="samlling">
+            <img
+              src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_05_minimap_pc.png"
+              alt=""
+            />
+          </div>
+          <div id="category">
+            <img
+              src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/map_category_pc.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="courseinfo">
+        <!-- 코스 미니사진+코스소개글 BOX -->
+        <div id="coursespanDiv1">
+          <div id="smallimg">
+            <img
+              style="width: 100%; height: 100%; object-fit: fill"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201910/01/d3d2d7e3-2ac2-4a73-b82d-606d873f7ab8.jpg"
+              alt=""
+            />
+          </div>
+
+			<!-- stars = 속이 채워진 별,  starsNo = 속이 빈 별-->
+			  <!-- 별점 작업시 주의 JSstars stars 앞에 JS 붙은 거는 사용 하지 말아주세요-->
+			
+          <div id="coursespan">
+            <h1>제주올레 5코스</h1>
+            <a>난이도 : </a>
+            <div class="stars"></div>
+            <div class="stars"></div>
+            <div class="stars"></div>
+            <div class="stars"></div>
+            <div class="starsNo"></div>
+            <h3>기본 정보</h3>
+			  <p>총 길이 : 13.4Km 소요시간 : 4-5시간</p>
+            <p>주소 : 제주특별자치도 서귀포시 남원읍 남태해안로 140</p>
+            <p>오감을 활짝 열고 걷는 바당올레와 마을 올레다. 남원포구에서 시작해 대한민국에서 가장 아름다운 해안 산책로로 꼽히는 큰엉 경승지 산책길을 지나 민물과 바닷물이 만나는 쇠소깍까지 이어지는 길이다. 키가 훌쩍 큰 동백나무로 울타리를 두른 마을 풍경이 멋스럽다. 남원읍과 해병대 93대대의 도움을 받아 사라지고 묻히고 끊어진 바당올레길 세 곳을 복원했다. 덕분에 난대 식물이 울창한 숲을 지나서 바다로 나가는 특별한 즐거움을 누릴 수 있게 되었다.</p>
+			  
+          </div>
+        </div>
+        <div id="coursespanDiv2">
+          <img
+            style="width: 100%; height: 100%; object-fit: fill"
+            src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_05_imgmap_pc.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div id="infobox2">
+      <!-- 주변맛집 박스, 댓글창 박스 -->
+      <div id="restourant">
+        <!-- 주변맛집 박스 -->
+        <form>
+          <div
+            id="btnBox"
+            style="
+              margin: 1%;
+              flex: 1;
+              display: flex;
+              text-align: center;
+            "
+          >
+            <div
+              style="margin: 0; flex: 1"
+              class="btn-group"
+              style="float: center"
+              role="group"
+              aria-label="Basic radio toggle button group"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio1"
+                autocomplete="off"
+                checked
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio1"
+                onclick="showList2(true)"
+                >주변 경관</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio2"
+                autocomplete="off"
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio2"
+                onclick="showList2(false)"
+                >주변 맛집</label
+              >
+            </div>
+          </div>
+        </form>
+
+        <!-- 주변경관 목록 -->
+
+        <div class="L1" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201907/26/1c04315e-d3a4-4d31-8ed4-fdc016116a53.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">성널오름</span></strong>
+            </p>
+            <p style="text-align: center">
+              널판지로 성을 쌓은것 처럼 보이는 바위 절벽
+            </p>
+          </article>
+        </div>
+
+        <div class="L2" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201908/27/d2bcfa6e-0a19-4ed1-a70e-9308e5ff27ff.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">송령이골</span></strong>
+            </p>
+            <p style="text-align: center">
+              사건 당시 토벌대에게 사살된 무장대의 시신이 옮겨진 곳
+            </p>
+          </article>
+        </div>
+
+        <div class="L3" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/8cc86f90-a532-47ca-8c95-129a2a2be5ec.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">자배봉</span></strong>
+            </p>
+            <p style="text-align: center">
+              생태숲과 유적지를 가지고 있는 자배봉
+            </p>
+          </article>
+        </div>
+
+        <!-- 주변경관 목록 끝 -->
+
+        <!-- 주변맛집 목록 -->
+
+        <div class="R1" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/c96d388b-2f06-4393-a8c4-5023f4ab41cd.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+             <!-- 식당 네이버 지도로 찾아서 링크 넣으세여 --> <strong
+                ><a
+                  href="https://naver.me/x35qLjMZ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >마더카페</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+              엄마가 차려준 듯, 정성가득한 밥상을 맛볼 수 있는 카페 겸 식당
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 서귀포시 남원읍 태위로894번길 45<br /> ⏰이용 시간 : 평일 : 09:00 ~ 19:00 , 주말 : 09:00 ~ 19:00<br />📞연락처 : (+82) 064-764-8233"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <div class="R2" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/202205/31/6abd0402-c751-4e7b-b6cc-c5e800cd3520.JPG"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong
+                ><a
+                  href="https://naver.me/GpJG95AT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >동동차이나</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+             제주특산품인 황게를 활용해 눈으로 즐길 수 있는 재미도 느낄 수 있다.
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 서귀포시 남원읍 태위로689번길 7<br /> ⏰이용 시간 : 정보 없음<br />📞연락처 : (+82) 064-764-6659"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <div class="R3" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/202211/04/035f5276-479b-4bb8-abb4-8b1337f1c6e4.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong
+                ><a
+                  href="https://naver.me/xjeLAonq"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >유나카페</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+              공천포 검은모래 앞에 위치한 카페, 영화 '좋은날' 촬영지
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 서귀포시 남원읍 공천포로 81<br /> ⏰이용 시간 : 평일 : 11:00 ~ 20:00 , 주말 : 11:00 ~ 20:00<br />📞연락처 : (+82) 064-732-6969"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <!-- 주변맛집 목록 끝-->
+      </div>
+    <div id="comment">
+				<div id="contentbox">
+					<ul id="comment-list"></ul>
+				</div>
+				<div id="starContainer">
+					<div id="ratingStars">
+						<span id="starText">난이도 : </span>
+						<span class="star" data-rating="1">&#9734;</span>
+						<span class="star" data-rating="2">&#9734;</span>
+						<span class="star" data-rating="3">&#9734;</span>
+						<span class="star" data-rating="4">&#9734;</span>
+						<span class="star" data-rating="5">&#9734;</span>
+					</div>
+				</div>
+				<div id="commentbox">
+					<input
+						type="text"
+						id="commentInput"
+						placeholder="댓글을 입력하세요"
+						style="width: 80%; height: 100%; float: left;"
+					/>
+					<button
+						id="submitBtn"
+						class="btn btn-dark"
+						style="width: 20%; height: 100%; float: right;"
+					>
+						완료
+					</button>
+				</div>
+			</div>
+		</div>
+
+    <script type="text/javascript" src="asset/Ohlle_info.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+      });
+    </script>
+  </body>
+</html>

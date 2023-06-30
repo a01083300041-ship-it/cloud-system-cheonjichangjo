@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 부트스트랩 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+		<script src="asset/Ohlle_info.js" defer></script>
+
+
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="stylesheet" href="asset/Ohlle_info.css" />
+    <title>Jeju Olle Trail</title>
+  </head>
+  <body>
+    <div class="box">
+      <span class="Jeju-Olle-Trail"> Jeju Olle Trail </span>
+    </div>
+
+    <div id="infobox1">
+      <!-- 코스 상세사진, 코스 미니사진+코스소개글 BOX -->
+      <div id="courseimg">
+        <div id="bigimg">
+          <img
+            src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_21_map_pc.jpg"
+            alt=""
+          />
+        </div>
+        <div id="small">
+          <div id="samlling">
+            <img
+              src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_21_minimap_pc.png"
+              alt=""
+            />
+          </div>
+          <div id="category">
+            <img
+              src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/map_category_pc.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="courseinfo">
+        <!-- 코스 미니사진+코스소개글 BOX -->
+        <div id="coursespanDiv1">
+          <div id="smallimg">
+            <img
+              style="width: 100%; height: 100%; object-fit: fill"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201910/01/9020b513-5f67-4312-aa74-6fbafb967369.jpg"
+              alt=""
+            />
+          </div>
+
+			<!-- stars = 속이 채워진 별,  starsNo = 속이 빈 별-->
+			  <!-- 별점 작업시 주의 JSstars stars 앞에 JS 붙은 거는 사용 하지 말아주세요-->
+			
+          <div id="coursespan">
+            <h1>제주올레 21코스</h1>
+            <a>난이도 : </a>
+            <div class="stars"></div>
+            <div class="stars"></div>
+            <div class="stars"></div>
+			<div class="stars"></div>
+			<div class="stars"></div>
+            <h3>기본 정보</h3>
+			<p>총 길이 : 11.3Km 소요시간 : 3-4시간</p>
+            <p>주소 : 제주특별자치도 제주시 구좌읍 하도리 3204-1 2473-1</p>
+            <p>구좌읍의 바다를 바라보며 시작하여 마을과 밭길로 1/3, 바닷길로 1/3, 그리고 오름으로 1/3 등 제주 동부의 자연을 고르게 체험하는 길이다. 
+		제주의 동쪽 땅끝이라는 뜻을 지닌 지미봉 위에서 360도 어디 한 곳 가릴 데 없이 제주가 펼쳐진다. 시흥초등학교, 말미오름, 당근밭, 
+		감자밭이 한눈에 들어오고 한 켠에 성산일출봉이 떠있는 푸른 제주의 동쪽 바다와 용눈이오름 다랑쉬오름이 있는 제주의 동부 오름 군락이 밀려든다.</p>
+          </div>
+        </div>
+        <div id="coursespanDiv2">
+          <img
+            style="width: 100%; height: 100%; object-fit: fill"
+            src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_21_imgmap_pc.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div id="infobox2">
+      <!-- 주변맛집 박스, 댓글창 박스 -->
+      <div id="restourant">
+        <!-- 주변맛집 박스 -->
+        <form>
+          <div
+            id="btnBox"
+            style="
+              margin: 1%;
+              flex: 1;
+              display: flex;
+              text-align: center;
+            "
+          >
+            <div
+              style="margin: 0; flex: 1"
+              class="btn-group"
+              style="float: center"
+              role="group"
+              aria-label="Basic radio toggle button group"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio1"
+                autocomplete="off"
+                checked
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio1"
+                onclick="showList2(true)"
+                >주변 경관</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio2"
+                autocomplete="off"
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio2"
+                onclick="showList2(false)"
+                >주변 맛집</label
+              >
+            </div>
+          </div>
+        </form>
+
+        <!-- 주변경관 목록 -->
+
+        <div class="L1" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201908/06/57de5363-dfcf-4f0c-8f7d-a9680d127de8.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">세화해변</span></strong>
+            </p>
+            <p style="text-align: center">
+            인생 사진을 남길 수 있는 인생 바다
+            </p>
+          </article>
+        </div>
+
+        <div class="L2" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/304837df-8176-44c0-997a-31befdb7dfd9.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">별방진</span></strong>
+            </p>
+            <p style="text-align: center">
+            조선시대 제주도 동부지역 최대 기지였던 성
+            </p>
+          </article>
+        </div>
+
+        <div class="L3" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201908/23/0693cfbc-b293-4924-951b-368b678ead81.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">평대해변</span></strong>
+            </p>
+            <p style="text-align: center">
+            눈앞에 펼쳐지는 에메랄드 빛 장관
+            </p>
+          </article>
+        </div>
+
+        <!-- 주변경관 목록 끝 -->
+
+        <!-- 주변맛집 목록 -->
+
+        <div class="R1" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/11103a08-8d99-4efc-9b74-171ece15b453.gif"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+             <!-- 식당 네이버 지도로 찾아서 링크 넣으세여 --> <strong
+                ><a
+                  href="https://map.naver.com/v5/entry/place/17032617?c=15,0,0,0,dh&isCorrectAnswer=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >명진전복</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+            제주도 대표 전복요리 전문점 2016 KOREAT JEJU TOP10 선정
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 제주시 구좌읍 해맞이해안로 1282<br /> ⏰이용 시간 : 평일 : 09:30 ~ 21:30 , 주말 : 09:30 ~ 21:30<br />📞연락처 : (+82) 064-782-9944"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <div class="R2" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201811/05/f9ce9cd9-4b83-489a-8a87-73a27b1c7a17.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong
+                ><a
+                  href="https://map.naver.com/v5/entry/place/36864711?c=15,0,0,0,dh&isCorrectAnswer=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >평대성게국수</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+            바다 내음을 가득 품은 국수 한 그릇
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 제주시 구좌읍 해맞이해안로 1172<br /> ⏰이용 시간 : 평일 : 10 ~ 18:00 , 주말 : 10 ~ 18:00<br />📞연락처 : (+82) 064-783-2466"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <div class="R3" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/202110/27/fb633aa6-1505-4c57-9a35-acefabcf1aaa.JPG"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong
+                ><a
+                  href="https://map.naver.com/v5/entry/place/34658467?lng=126.8372674&lat=33.537337&placePath=%2Fhome&c=15,0,0,0,dh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >톰톰카레</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+            반반카레가 이색적인 구좌읍 평대리의 카레 맛집
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 제주시 구좌읍 해맞이해안로 1112<br /> ⏰이용 시간 : 평일 : 11:00 ~ 20:00 , 주말 : 11:00 ~ 20:00<br />📞연락처 : (+82) 070-7799-1535"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <!-- 주변맛집 목록 끝-->
+      </div>
+      <div id="comment">
+				<div id="contentbox">
+					<ul id="comment-list"></ul>
+				</div>
+				<div id="starContainer">
+					<div id="ratingStars">
+						<span id="starText">난이도 : </span>
+						<span class="star" data-rating="1">&#9734;</span>
+						<span class="star" data-rating="2">&#9734;</span>
+						<span class="star" data-rating="3">&#9734;</span>
+						<span class="star" data-rating="4">&#9734;</span>
+						<span class="star" data-rating="5">&#9734;</span>
+					</div>
+				</div>
+				<div id="commentbox">
+					<input
+						type="text"
+						id="commentInput"
+						placeholder="댓글을 입력하세요"
+						style="width: 80%; height: 100%; float: left;"
+					/>
+					<button
+						id="submitBtn"
+						class="btn btn-dark"
+						style="width: 20%; height: 100%; float: right;"
+					>
+						완료
+					</button>
+				</div>
+			</div>
+		</div>
+
+    <script type="text/javascript" src="asset/Ohlle_info.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 부트스트랩 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+		<script src="asset/Ohlle_info.js" defer></script>
+
+
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="stylesheet" href="asset/Ohlle_info.css" />
+    <title>Jeju Olle Trail</title>
+  </head>
+  <body>
+    <div class="box">
+      <span class="Jeju-Olle-Trail"> Jeju Olle Trail </span>
+    </div>
+
+    <div id="infobox1">
+      <!-- 코스 상세사진, 코스 미니사진+코스소개글 BOX -->
+      <div id="courseimg">
+        <div id="bigimg">
+          <img
+            src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_17_map_pc.jpg"
+            alt=""
+          />
+        </div>
+        <div id="small">
+          <div id="samlling">
+            <img
+              src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_17_minimap_pc.png"
+              alt=""
+            />
+          </div>
+          <div id="category">
+            <img
+              src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/map_category_pc.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="courseinfo">
+        <!-- 코스 미니사진+코스소개글 BOX -->
+        <div id="coursespanDiv1">
+          <div id="smallimg">
+            <img
+              style="width: 100%; height: 100%; object-fit: fill"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201910/01/fe58e092-e95f-4317-bbcc-dde1984bc5f8.jpg"
+              alt=""
+            />
+          </div>
+
+			<!-- stars = 속이 채워진 별,  starsNo = 속이 빈 별-->
+			  <!-- 별점 작업시 주의 JSstars stars 앞에 JS 붙은 거는 사용 하지 말아주세요-->
+			
+          <div id="coursespan">
+            <h1>제주올레 17코스</h1>
+            <a>난이도 : </a>
+            <div class="stars"></div>
+            <div class="stars"></div>
+            <div class="stars"></div>
+			<div class="stars"></div>	
+            <div class="starsNo"></div>	  
+            <h3>기본 정보</h3>
+			<p>총 길이 : 18.1Km 소요시간 : 6-7시간</p>
+            <p>주소 : 제주특별자치도 제주시 도두1동 2612-1</p>
+            <p>무수천을 따라 숲길, 무수천과 바다가 만나는 물길을 지나 공항이 있는 제주시 도심으로 들어선다. 
+			제주시내와 인접한 곳이라고는 믿기지 않을 정도로 고즈넉한 외도의 월대와 내도의 알작지 해안을 만난다. 
+			청보리 길과 이호테우해변과 한가로운 마을을 걸으면 어느새 발길은 제주의 머리라는 도두봉에 오른다. 심심한 해안도로를 걷고 난 후 만나는 용두암과 
+			용연다리도 볼거리다. 무근성과 목관아지를 지나 제주 시내를 통과하는 길은 제주 사람들이 과거에 살아온 모습과 지금 
+			살아가는 모습들을 있는 그대로 느낄 수 있다.</p>
+          </div>
+        </div>
+        <div id="coursespanDiv2">
+          <img
+            style="width: 100%; height: 100%; object-fit: fill"
+            src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_17_imgmap_pc.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div id="infobox2">
+      <!-- 주변맛집 박스, 댓글창 박스 -->
+      <div id="restourant">
+        <!-- 주변맛집 박스 -->
+        <form>
+          <div
+            id="btnBox"
+            style="
+              margin: 1%;
+              flex: 1;
+              display: flex;
+              text-align: center;
+            "
+          >
+            <div
+              style="margin: 0; flex: 1"
+              class="btn-group"
+              style="float: center"
+              role="group"
+              aria-label="Basic radio toggle button group"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio1"
+                autocomplete="off"
+                checked
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio1"
+                onclick="showList2(true)"
+                >주변 경관</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio2"
+                autocomplete="off"
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio2"
+                onclick="showList2(false)"
+                >주변 맛집</label
+              >
+            </div>
+          </div>
+        </form>
+
+        <!-- 주변경관 목록 -->
+
+        <div class="L1" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/1ceb1f45-47f8-4cc0-98c5-74fe575e5ad7.gif"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">이호테우말등대</span></strong>
+            </p>
+            <p style="text-align: center">
+            이호테우해변의 랜드마크, 말등대
+            </p>
+          </article>
+        </div>
+
+        <div class="L2" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://www.korea.kr/goNewsRes/attaches/innods/images/000120/01_640.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">도두동 무지개 해안도로</span></strong>
+            </p>
+            <p style="text-align: center">
+            용담이호해안도로에서 도두동 가는 방향에 위치한 곳으로 방호벽이 무지개 색으로 페인팅
+            </p>
+          </article>
+        </div>
+
+        <div class="L3" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/202112/02/e3086c46-ae5d-425b-b549-67776f94e6ef.JPG"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">이호테우해수욕장</span></strong>
+            </p>
+            <p style="text-align: center">
+            붉은 조랑말과 흰 조랑말의 극명하게 대조되는 색감이 이국적인 풍경을 선사하는 해변
+            </p>
+          </article>
+        </div>
+
+        <!-- 주변경관 목록 끝 -->
+
+        <!-- 주변맛집 목록 -->
+
+        <div class="R1" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201811/01/1f4a37fb-70f7-41e4-bc11-477c5713e983.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+             <!-- 식당 네이버 지도로 찾아서 링크 넣으세여 --> <strong
+                ><a
+                  href="https://map.naver.com/v5/entry/place/11840561?entry=plt&c=13,0,0,0,dh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >돈사돈</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+            제주 흑돼지 근고기 연탄구이집으로, 양질의 고기뿐만 아니라 연예인들의 방문 후기와 TV출연으로도 유명해진 곳, KOREAT JEJU TOP10 선정
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 제주시 우평로 19<br /> ⏰이용 시간 : 평일 : 12:30 ~ 22:00 , 주말 : 12:30 ~ 22:00 <br />📞연락처 : (+82) 064-746-8989"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <div class="R2" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/7ef14f67-ac39-4997-8583-8de9c84b3583.gif"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong
+                ><a
+                  href="https://map.naver.com/v5/entry/place/11595461?entry=plt&c=15,0,0,0,dh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >순옥이네 명가</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+            도두동에 위치한 전복요리전문집 2016 KOREAT JEJU TOP10 선정
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주 제주시 도공로 8<br /> ⏰이용 시간 : 평일 : 09:00 ~ 21:00 , 주말 : 09:00 ~ 21:00<br />📞연락처 : (+82) 064-743-4813"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <div class="R3" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201811/01/8c90bdb4-898f-4ec4-b26f-7553ce93f360.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong
+                ><a
+                  href="https://map.naver.com/v5/entry/place/13391363?entry=plt&c=15,0,0,0,dh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >도두해녀의집</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+            도두항에 위치한 해산물 요리 전문점. 물회가 싸고 맛있다며 소문난 집
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 제주시 도두항길 16<br /> ⏰이용 시간 : 평일 : 10:00 ~ 20:30 , 주말 : 10:00 ~ 20:30<br />📞연락처 : (+82) 064-743-4989"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <!-- 주변맛집 목록 끝-->
+      </div>
+      <div id="comment">
+				<div id="contentbox">
+					<ul id="comment-list"></ul>
+				</div>
+				<div id="starContainer">
+					<div id="ratingStars">
+						<span id="starText">난이도 : </span>
+						<span class="star" data-rating="1">&#9734;</span>
+						<span class="star" data-rating="2">&#9734;</span>
+						<span class="star" data-rating="3">&#9734;</span>
+						<span class="star" data-rating="4">&#9734;</span>
+						<span class="star" data-rating="5">&#9734;</span>
+					</div>
+				</div>
+				<div id="commentbox">
+					<input
+						type="text"
+						id="commentInput"
+						placeholder="댓글을 입력하세요"
+						style="width: 80%; height: 100%; float: left;"
+					/>
+					<button
+						id="submitBtn"
+						class="btn btn-dark"
+						style="width: 20%; height: 100%; float: right;"
+					>
+						완료
+					</button>
+				</div>
+			</div>
+		</div>
+
+    <script type="text/javascript" src="asset/Ohlle_info.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+      });
+    </script>
+  </body>
+</html>

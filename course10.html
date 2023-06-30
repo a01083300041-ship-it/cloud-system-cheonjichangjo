@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 부트스트랩 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+	  
+	  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+		<script src="asset/Ohlle_info.js" defer></script>
+
+    <link rel="stylesheet" href="asset/Ohlle_info.css" />
+    <title>Jeju Olle Trail</title>
+  </head>
+  <body>
+    <div class="box">
+      <span class="Jeju-Olle-Trail"> Jeju Olle Trail </span>
+    </div>
+
+    <div id="infobox1">
+      <!-- 코스 상세사진, 코스 미니사진+코스소개글 BOX -->
+      <div id="courseimg">
+        <div id="bigimg">
+          <img
+            src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_10_map_pc.jpg"
+            alt=""
+          />
+        </div>
+        <div id="small">
+          <div id="samlling">
+            <img
+              src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_10_minimap_pc.png"
+              alt=""
+            />
+          </div>
+          <div id="category">
+            <img
+              src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/map_category_pc.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="courseinfo">
+        <!-- 코스 미니사진+코스소개글 BOX -->
+        <div id="coursespanDiv1">
+          <div id="smallimg">
+            <img
+              style="width: 100%; height: 100%; object-fit: fill"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/202111/18/fbb21ca3-656a-47e0-b8c4-54bf94057fce.jpg"
+              alt=""
+            />
+          </div>
+
+			<!-- stars = 속이 채워진 별,  starsNo = 속이 빈 별-->
+			  <!-- 별점 작업시 주의 JSstars stars 앞에 JS 붙은 거는 사용 하지 말아주세요-->
+			
+          <div id="coursespan">
+            <h1>제주올레 10코스</h1>
+            <a>난이도 : </a>
+            <div class="stars"></div>
+            <div class="stars"></div>
+            <div class="stars"></div>
+            <div class="stars"></div>
+            <div class="stars"></div>
+            <h3>기본 정보</h3>
+			  <p>총 길이 : 15.6Km 소요시간 : 5-6시간</p>
+            <p>주소 : 제주특별자치도 서귀포시 대정읍 상모리 산 2-27</p>
+            <p>화순금모래해수욕장에서 시작해 썩은다리와 황우치 해안, 산방연대, 송악산을 지나 대정읍 하모까지 이어지는 해안 올레. 산방산의 위용을 바라보며 걷기 시작하는 길이다. 초반 해안길을 오로지 걸어야만 볼 수 있는 최고의 해안 경관으로 꼽힌다. 마라도와 가파도를 가까이 볼 수 있고 산방산과 오름 군락, 비단처럼 펼쳐진 한라산의 비경도 감상할 수 있다.</p>
+			  
+          </div>
+        </div>
+        <div id="coursespanDiv2">
+          <img
+            style="width: 100%; height: 100%; object-fit: fill"
+            src="https://s3.ap-northeast-2.amazonaws.com/contents.ollepass.org/static/homepage/trail/img/road/road_10_imgmap_pc.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div id="infobox2">
+      <!-- 주변맛집 박스, 댓글창 박스 -->
+      <div id="restourant">
+        <!-- 주변맛집 박스 -->
+        <form>
+          <div
+            id="btnBox"
+            style="
+              margin: 1%;
+              flex: 1;
+              display: flex;
+              text-align: center;
+            "
+          >
+            <div
+              style="margin: 0; flex: 1"
+              class="btn-group"
+              style="float: center"
+              role="group"
+              aria-label="Basic radio toggle button group"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio1"
+                autocomplete="off"
+                checked
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio1"
+                onclick="showList2(true)"
+                >주변 경관</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio2"
+                autocomplete="off"
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio2"
+                onclick="showList2(false)"
+                >주변 맛집</label
+              >
+            </div>
+          </div>
+        </form>
+
+        <!-- 주변경관 목록 -->
+
+        <div class="L1" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/202112/21/4869078f-3575-44ad-b238-6a92fa24f497.JPG"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">무등이왓터</span></strong>
+            </p>
+            <p style="text-align: center">
+              불에 타 흔적만 남은 마을의 터
+            </p>
+          </article>
+        </div>
+
+        <div class="L2" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201908/08/1e0dee49-5fba-4e54-9697-a6b6176ccf3b.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">형제해안로전망대</span></strong>
+            </p>
+            <p style="text-align: center">
+             형제섬이 보이는 형제해안로 전망대, 한국의 아름다운 길 100선
+            </p>
+          </article>
+        </div>
+
+        <div class="L3" id="List1-div1">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/202111/12/dd57fe99-46ea-483b-bfcc-b6fa954baa7c.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong><span style="font-size: 24px">귤밭76번지</span></strong>
+            </p>
+            <p style="text-align: center">
+    			 감귤 체험도하고 감성 사진도 찍을 수 있는 귤밭76번지
+            </p>
+          </article>
+        </div>
+
+        <!-- 주변경관 목록 끝 -->
+
+        <!-- 주변맛집 목록 -->
+
+        <div class="R1" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/201809/17/6ee82bc8-42e7-4378-9516-033b823bce6f.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+             <!-- 식당 네이버 지도로 찾아서 링크 넣으세여 --> <strong
+                ><a
+                  href="https://naver.me/xPI0MxtO"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >가온해</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+             서귀포 대평리에서 다양한 효소를 이용해 차를 만드는 찻집
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 서귀포시 안덕면 난드르로 4 <br /> ⏰이용 시간 : 평일 : 10:00 ~ 23:00 , 주말 : 10:00 ~ 23:00 <br />📞연락처 : (+82) 064-739-7717"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <div class="R2" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/202305/19/dd590a5c-6b7f-4532-bf89-77d1fc9fb2fb.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong
+                ><a
+                  href="https://naver.me/F6mbOmP2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >사계소희네국수</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+            노란 유채꽃밭 바로 옆 고기국수집
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 서귀포시 안덕면 산방로 244 <br /> ⏰이용 시간 : 평일 : 09:30 ~ 19:30 , 주말 : 09:30 ~ 19:30 <br />📞연락처 : (+82) 064-792-1050"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <div class="R3" id="List2-div1" style="display: none">
+          <div id="List1-div12">
+            <img
+              id="List1-img"
+              src="https://api.cdn.visitjeju.net/photomng/imgpath/202305/18/d77017fb-1eae-4f62-a50a-c5a82182bd97.jpg"
+              alt=""
+            />
+          </div>
+          <article id="List1-article">
+            <p style="text-align: center">
+              <strong
+                ><a
+                  href="https://naver.me/5OnRvyyG"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline-none enlarge-on-hover"
+                  style="font-size: 24px"
+                  >고래성</a
+                ></strong
+              >
+            </p>
+            <p style="text-align: center">
+             오징어, 문어가 통째로 들어간 해물짬뽕
+            </p>
+            <span
+              class="d-inline-block"
+              tabindex="0"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-content="📭주소 : 제주특별자치도 서귀포시 안덕면 사계남로 133 <br /> ⏰이용 시간 : 평일 : 10:30 ~ 19:50 , 주말 : 10:30 ~ 19:50 <br />📞연락처 : (+82) 0507-1367-0107"
+              data-bs-html="true"
+            >
+              <button class="btn btn-link" type="button" disabled>
+                <strong><h4>자세히 보기</h4></strong>
+              </button>
+            </span>
+          </article>
+        </div>
+
+        <!-- 주변맛집 목록 끝-->
+      </div>
+     <div id="comment">
+				<div id="contentbox">
+					<ul id="comment-list"></ul>
+				</div>
+				<div id="starContainer">
+					<div id="ratingStars">
+						<span id="starText">난이도 : </span>
+						<span class="star" data-rating="1">&#9734;</span>
+						<span class="star" data-rating="2">&#9734;</span>
+						<span class="star" data-rating="3">&#9734;</span>
+						<span class="star" data-rating="4">&#9734;</span>
+						<span class="star" data-rating="5">&#9734;</span>
+					</div>
+				</div>
+				<div id="commentbox">
+					<input
+						type="text"
+						id="commentInput"
+						placeholder="댓글을 입력하세요"
+						style="width: 80%; height: 100%; float: left;"
+					/>
+					<button
+						id="submitBtn"
+						class="btn btn-dark"
+						style="width: 20%; height: 100%; float: right;"
+					>
+						완료
+					</button>
+				</div>
+			</div>
+		</div>
+
+    <script type="text/javascript" src="asset/Ohlle_info.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+      });
+    </script>
+  </body>
+</html>

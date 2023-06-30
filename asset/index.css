@@ -1,0 +1,197 @@
+ @font-face {
+  font-family: "index-font";
+  src: url("/font/BMEULJIROTTF.ttf");
+}
+
+
+ body {
+    background-color: #8bc5fb;
+	animation: backInDown; /* 애니메이션 */
+	animation-duration: 1s;	
+  }
+
+.box {
+  text-align: center;
+	animation: jackInTheBox; /* 애니메이션 */
+  animation-duration: 2s;
+}
+
+
+  .Jeju-Olle-Trail {
+    width: auto;
+    height: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke: 1px #000;
+    font-family: Barlow;
+    font-size: 80px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+	  
+	  
+  }
+
+
+#loginBtn {
+	text-align: right;
+    display: right;
+	margin-right: 19.5%;
+	justify-content : center;
+	
+	animation: flash; /* 애니메이션 */
+  animation-duration: 2s;
+}
+
+
+
+  .tx {
+    width: auto;
+    height: auto;
+    font-family: NotoSansKR;
+    font-size: 30px;
+    font-weight: 100;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+  }
+
+
+
+.imgbox {
+  display: flex;
+  flex-direction: column;
+  height: 50dvh;
+
+  margin-top: 1%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.imgbox div {
+  flex: 1;
+  display: flex;
+}
+
+.imgbox div article {
+  flex: 1;
+  text-align: center;
+}
+
+.imgbox div article h4 {
+  margin-top: 10px;
+  font-family: "index-font";
+}
+
+.imgbox div img {
+  height: 65%;
+  width: 50%;
+}
+
+
+#MainImg {
+	width: 61%;
+	height: 70%;
+}
+
+.Flight {
+	margin-left: 19.5%;
+	margin-right: 19.5%;
+}
+
+.BigBox {
+	margin-right: 19.5%;
+	display : flex;
+	justify-content: right;
+	align-items : center;
+	margin-top: 10px; 
+}
+
+
+.weatherBox {
+	width: 190px;
+    height: 50px;
+	background: #8bc5fb;
+
+	text-align: center;
+	border-radius: 10px;
+  animation: fadeInDown; /* 애니메이션 */
+  animation-duration: 1.9s;
+
+}
+
+.weatherInBoxL {
+	width: 30%;
+	height: 50px;
+	float: left;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	display : flex;
+	justify-content: center;
+	align-items : center;
+	border-radius: 10px;
+	border-radius: 10px 0px 0px 10px;
+}
+.weatherInBoxR {
+	width: 70%;
+	height: 50px;
+	float: right;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	display : flex;
+	flex-direction: column; /*수직 정렬*/
+      align-items: center;
+      justify-content: center;
+	border-radius: 10px;
+	border-radius: 0px 10px 10px 0px;
+}
+.weather-box {
+      display: none;
+	/*margin-left: 19.5%;
+	margin-bottom: 10px;*/
+
+    }
+#TvW {
+	
+}
+
+#WeatherIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+
+#map1 {
+		animation: fadeInUp; /* 애니메이션 */
+  animation-duration: 2s;
+}
+
+
+#map2 {
+		animation: fadeInUp; /* 애니메이션 */
+  animation-duration: 2s;
+}
+
+
+#map3 {
+		animation: fadeInUp; /* 애니메이션 */
+  animation-duration: 2s;
+}
+
+
+#map4 {
+		animation: fadeInUp; /* 애니메이션 */
+  animation-duration: 2s;
+}
+
+#map5 {
+		animation: fadeInUp; /* 애니메이션 */
+  animation-duration: 2s;
+}

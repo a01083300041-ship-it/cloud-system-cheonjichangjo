@@ -1,0 +1,362 @@
+body {
+  height: 100vh;
+  width: 100wh;
+}
+
+.box {
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 40px;
+  animation: slideInDown; /* 애니메이션 */
+  animation-duration: 2s;
+}
+
+.Jeju-Olle-Trail {
+  /* 배경화면 색상 지정 */
+  width: auto;
+  height: auto;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Barlow;
+  font-size: 50px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #202022;
+}
+
+/* border: 3px solid; 요고는 구분해놓은거 나중에 작업할때 지우고 하셈  */
+#infobox1 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5%;
+  height: auto;
+}
+
+#infobox2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5%;
+  height: 60vh;
+}
+#courseimg {
+  width: 40%;
+  height: 100%;
+  margin-left: 5%;
+  display: flex;
+  text-align: center;
+  	animation: fadeInDown; /* 애니메이션 */
+	animation-duration: 2s;
+}
+
+#courseimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+#bigimg {
+  flex: 3;
+
+}
+
+#small {
+  flex: 1;
+  display: flex;
+
+  flex-direction: column;
+}
+
+#samlling {
+  flex: 1;
+}
+
+#category {
+  flex: 2.5;
+
+}
+
+#courseinfo {
+  width: 40%;
+  height: auto;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+  animation: fadeInDown; /* 애니메이션 */
+  animation-duration: 2s;
+}
+
+#coursespanDiv1 {
+  margin: 1%;
+  flex: 2;
+  display: flex;
+}
+
+#coursespanDiv2 {
+  margin: 1%;
+  flex: 1;
+}
+
+#smallimg {
+  text-align: center;
+  flex: 1;
+  margin: 1% 1% 15% 1%;
+}
+
+#coursespan {
+  text-align: center;
+  flex: 3;
+  margin: 1%;
+}
+
+#restourant {
+  width: 40%;
+  height: 100%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+#List1-div1 {
+  margin: 1%;
+  flex: 1;
+  display: flex;
+
+  text-align: center;
+}
+
+#List2-div1 {
+  margin: 1%;
+  flex: 1;
+  display: flex;
+  text-align: center;
+}
+
+#List1-div12 {
+  margin: 0;
+  flex: 1;
+}
+
+#List1-img {
+  width: 100%;
+  height: 100%;
+}
+
+#List1-article {
+  flex: 3.5;
+  width: 100%;
+  height: 100%;
+}
+
+
+#comment-input {
+	background: #DEEFE7;
+	border:none
+}
+
+#comment {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10%;
+
+	border-color: red green blue;
+	
+  animation: backInRight; /* 애니메이션 */
+  animation-duration: 2s;
+}
+
+#commentbox {
+  flex: 1;
+	background: #DEEFE7;
+	border-color: #002333;
+	border-radius: 0px 0px 5px 5px;
+
+}
+
+#contentbox {
+  flex: 12;
+	background: #8bc5fb;
+	border-color: #002333;
+	
+	border-radius: 10px 10px 0px 0px;
+	overflow: scroll;
+}
+
+#comment-list {
+	margin: 5px;
+  padding-left: 0;
+		  animation: fadeInUp; /* 애니메이션 */
+  animation-duration: 3s;
+}
+
+#starContainer {
+	flex: 1;
+	background: #A1C7E0;
+}
+
+#ratingStars {
+
+}
+
+li::before {
+}
+
+/* 별 색 노란 #ffd700 원본*/
+.stars {
+	display: inline-block;
+	font-size: 20px;
+	color: #FF5A33;
+}
+.stars::before {
+	content: '\2605';
+}
+
+.starsNo {
+	display: inline-block;
+	font-size: 20px;
+	color: #FF5A33;
+}
+.starsNo::before {
+	content: '\2606';
+}
+.JSstarsNo {
+	display: inline-block;
+	font-size: 20px;
+	color: #FF5A33;
+	cursor: pointer;
+}
+
+.JSstarsNo::before {
+	content: '\2606';
+}
+.JSfilled {
+	color: #FF5A33;
+}
+.JSfilled::before {
+	content: '\2605';
+}
+/*마우스 오버 링크 이동*/
+.underline-none {
+  text-decoration: none;
+}
+
+.enlarge-on-hover {
+  transition: transform 0.3s;
+  color: black; /* 검정색으로 설정 */
+}
+
+.enlarge-on-hover:hover {
+  transform: scale(1.2);
+}
+
+.popover {
+  max-width: 100%;
+  font-size: 16px;
+}
+
+.delete-btn {
+  color: red;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
+#btnBox {
+	animation: fadeInLeftBig; /* 버튼 애니메이션 */
+  animation-duration: 1s;
+}
+
+
+.L1 {
+  animation: fadeInLeftBig; /* 애니메이션 위에서 부터 하나씩 로드*/
+  animation-duration: 1.3s;
+}
+
+.L2 {
+  animation: fadeInLeftBig; /* 애니메이션 */
+  animation-duration: 1.6s;
+}
+
+.L3 {
+  animation: fadeInLeftBig; /* 애니메이션 */
+  animation-duration: 1.9s;
+}
+
+
+.R1 {
+  animation: fadeInLeftBig; /* 애니메이션 위에서 부터 하나씩 로드*/
+  animation-duration: 1.3s;
+}
+
+.R2 {
+  animation: fadeInLeftBig; /* 애니메이션 */
+  animation-duration: 1.6s;
+}
+
+.R3 {
+  animation: fadeInLeftBig; /* 애니메이션 */
+  animation-duration: 1.9s;
+}
+
+
+#commentboxch {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border-radius: 10px;
+	margin-bottom: 8px;
+}
+
+#starbox {
+  flex: 1;
+  margin-left: 6px;
+  margin-bottom: -3px;
+  
+}
+
+#reviewbox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+}
+
+#review {
+  flex: 1;
+  
+  margin-left: 6px;
+}
+#date {
+  flex: 1;
+  margin-left: 6px;
+  margin-bottom: 5px;
+ font-size: 12px;
+  color: #616161;
+}
+
+
+#starText {
+	font-size: 26px; /* 원하는 크기로 설정 */
+}
+
+
+    .star {
+      cursor: pointer;
+		font-size: 26px; /* 원하는 크기로 설정 */
+}
+    }
+    .filled {
+  color: red;
+    }
+
+.fill {
+  color: red;
+}
+
+.red {
+  color: red;
+}
